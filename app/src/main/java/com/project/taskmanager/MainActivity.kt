@@ -25,8 +25,6 @@ class MainActivity : AppCompatActivity() {
         listView = findViewById(R.id.listView)
 
         fab = findViewById(R.id.floatingActionButton3)
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        supportActionBar!!.setBackgroundDrawable(ColorDrawable(Color.parseColor("#000080")))
         supportActionBar?.setTitle("My Tasks")
 
 
@@ -47,11 +45,6 @@ class MainActivity : AppCompatActivity() {
         super.onStart()
         db = SQLiteDB(this)
         tableDB = db.writableDatabase
-//        cursor = tableDB.query(
-//            "notes", arrayOf("_id", "title", "description"),
-//            null, null, null,
-//            null, null
-//        )
         cursor = tableDB.rawQuery("select * from notes order by _id DESC", null)
         var customListAdapter = SimpleCursorAdapter(
             this,

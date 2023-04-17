@@ -13,9 +13,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
+        android:layout_marginTop="32dp"
         android:layout_marginEnd="32dp"
+        android:background="@color/black"
         app:cardElevation="20dp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -26,9 +27,10 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="25dp"
             android:layout_marginRight="25dp"
-            android:background="@color/white"
+            android:background="@color/black"
             android:gravity="center"
             android:hint="Enter Task"
+            android:textColor="@color/white"
             android:inputType="textPersonName"
             android:padding="30dp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -37,7 +39,43 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+
     </androidx.cardview.widget.CardView>
+
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="32dp"
+        app:cardElevation="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cardView">
+
+        <EditText
+            android:id="@+id/txtDesc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="36dp"
+            android:layout_marginRight="25dp"
+            android:background="@color/purple_700"
+            android:gravity="start"
+            android:lines="15"
+            android:padding="10dp"
+            android:textColor="@color/white"
+            android:textColorHint="#D1CFCF"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtTitle" />
+
+
+    </androidx.cardview.widget.CardView>
+
+
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/saveButton"
@@ -52,7 +90,7 @@
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toStartOf="@+id/deleteButton"
-        app:layout_constraintTop_toBottomOf="@id/cardView" />
+        app:layout_constraintTop_toBottomOf="@id/cardView2" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/deleteButton"
@@ -67,6 +105,6 @@
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/cardView" />
+        app:layout_constraintTop_toBottomOf="@id/cardView2" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

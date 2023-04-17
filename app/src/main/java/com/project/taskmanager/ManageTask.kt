@@ -31,6 +31,7 @@ class ManageTask : AppCompatActivity() {
     lateinit var contentValue: ContentValues
     var note_id: Long = 0
     lateinit var txtTitle: EditText
+    lateinit var txtDesc: EditText
     lateinit var saveButton: AppCompatButton
     lateinit var deleteButton: AppCompatButton
 
@@ -39,18 +40,20 @@ class ManageTask : AppCompatActivity() {
         setContentView(R.layout.activity_manage_task)
         supportActionBar?.setBackgroundDrawable(ColorDrawable(Color.parseColor("#000080")))
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        supportActionBar?.setTitle("Manage My Notes")
+        supportActionBar?.setTitle("Manage Tasks")
         note_id = intent.getLongExtra("note_id", -1)
         txtTitle = findViewById(R.id.txtTitle)
+        txtDesc = findViewById(R.id.txtDesc)
         db = SQLiteDB(this)
         tableDB = db.writableDatabase
         contentValue = ContentValues()
 
         if(note_id > 0) {
             tableDB = db.readableDatabase
-            cursor = tableDB.query("notes", arrayOf("title"), "_id=?", arrayOf(note_id.toString()), null, null, null)
+            cursor = tableDB.query("notes", arrayOf("title", "description"), "_id=?", arrayOf(note_id.toString()), null, null, null)
             if(cursor.moveToFirst()) {
                 txtTitle.setText(cursor.getString(0))
+                txtDesc.setText(cursor.getString(1))
             }
         }
 
@@ -71,15 +74,17 @@ class ManageTask : AppCompatActivity() {
     private fun saveNote() {
         if(note_id.toInt() == -1) { // New Save
             contentValue.put("title", txtTitle.text.toString())
+            contentValue.put("description", txtDesc.text.toString())
             tableDB.insert("notes", null, contentValue)
             startActivity(Intent(this, MainActivity::class.java))
             Toast.makeText(this, "Data saved successfully", Toast.LENGTH_SHORT).show()
         }
         if(note_id > 0) { // Update
             contentValue.put("title", txtTitle.text.toString())
+            contentValue.put("description", txtDesc.text.toString())
             tableDB.update("notes", contentValue, "_id=?", arrayOf(note_id.toString()))
             startActivity(Intent(this, MainActivity::class.java))
-            Toast.makeText(this, "Updation Successful", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Update Successful", Toast.LENGTH_SHORT).show()
             contentValue.clear()
         }
     }
