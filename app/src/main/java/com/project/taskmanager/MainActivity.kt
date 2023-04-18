@@ -26,6 +26,7 @@ class MainActivity : AppCompatActivity() {
 
         fab = findViewById(R.id.floatingActionButton3)
         supportActionBar?.setTitle("My Tasks")
+        supportActionBar?.setBackgroundDrawable(ColorDrawable(Color.parseColor("#000080")))
 
 
         fab.setOnClickListener {

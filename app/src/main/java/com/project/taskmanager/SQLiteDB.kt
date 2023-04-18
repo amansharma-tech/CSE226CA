@@ -12,4 +12,7 @@ class SQLiteDB(var ctx: Context): SQLiteOpenHelper(ctx, "Notepad_Database", null
     }
 
     override fun onUpgrade(db: SQLiteDatabase?, oldVersion: Int, newVersion: Int) {}
+
+
 }
+
