@@ -1,12 +1,17 @@
 package com.project.taskmanager
 
+import android.app.NotificationChannel
+import android.app.NotificationManager
 import android.content.Intent
 import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import android.widget.ListView
 import android.widget.SimpleCursorAdapter
 import com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -42,6 +47,8 @@ class MainActivity : AppCompatActivity() {
 
     }
 
+
+
     override fun onStart() {
         super.onStart()
         db = SQLiteDB(this)
@@ -62,5 +69,21 @@ class MainActivity : AppCompatActivity() {
         super.onDestroy()
         tableDB.close()
         cursor.close()
+    }
+
+
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+
+        menuInflater.inflate(R.menu.menu, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when(item.itemId) {
+            R.id.clock -> startActivity(Intent(this, AlarmNotify::class.java))
+        }
+
+        return true
     }
 }
