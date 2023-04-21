@@ -14,7 +14,11 @@ import android.view.Menu
 import android.view.MenuItem
 import android.widget.ListView
 import android.widget.SimpleCursorAdapter
+import android.widget.Toast
+import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.drawerlayout.widget.DrawerLayout
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.google.android.material.navigation.NavigationView
 
 class MainActivity : AppCompatActivity() {
     //-------------SQLite--------------------------
@@ -24,6 +28,10 @@ class MainActivity : AppCompatActivity() {
     //-----------ListView & FAB--------------------
     lateinit var listView: ListView
     lateinit var fab: FloatingActionButton
+    //--------------Navigation Drawer----------------------------
+    lateinit var navView: NavigationView
+    lateinit var drawerLayout: DrawerLayout
+    lateinit var toggle: ActionBarDrawerToggle
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -32,6 +40,29 @@ class MainActivity : AppCompatActivity() {
         fab = findViewById(R.id.floatingActionButton3)
         supportActionBar?.setTitle("My Tasks")
         supportActionBar?.setBackgroundDrawable(ColorDrawable(Color.parseColor("#000080")))
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
+        navView = findViewById(R.id.navView)
+        drawerLayout = findViewById(R.id.drawerLayout)
+
+        toggle = ActionBarDrawerToggle(this, drawerLayout, R.string.open, R.string.close)
+        drawerLayout.addDrawerListener(toggle)
+        toggle.syncState()
+
+        navView.setNavigationItemSelectedListener {
+            when (it.itemId) {
+                R.id.callUs -> {
+                    Toast.makeText(this, "Call Us at: +91-7001067632", Toast.LENGTH_LONG).show()
+                }
+                R.id.mailUs -> {
+                    Toast.makeText(this, "Mail Us at: \n com.example.notepad@gmail.com", Toast.LENGTH_LONG).show()
+                }
+                R.id.aboutUs -> {
+                    Toast.makeText(this, "AboutUs", Toast.LENGTH_SHORT).show()
+                }
+            }
+            true
+        }
 
 
         fab.setOnClickListener {
@@ -46,9 +77,20 @@ class MainActivity : AppCompatActivity() {
         }
 
     }
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when(item.itemId) {
+            R.id.clock -> startActivity(Intent(this, AlarmNotify::class.java))
+        }
+        if (toggle.onOptionsItemSelected(item)) {
+            return true
+        }
+        return true
+    }
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean { // For clock icon
 
-
-
+        menuInflater.inflate(R.menu.menu, menu)
+        return true
+    }
     override fun onStart() {
         super.onStart()
         db = SQLiteDB(this)
@@ -69,21 +111,5 @@ class MainActivity : AppCompatActivity() {
         super.onDestroy()
         tableDB.close()
         cursor.close()
-    }
-
-
-
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-
-        menuInflater.inflate(R.menu.menu, menu)
-        return true
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when(item.itemId) {
-            R.id.clock -> startActivity(Intent(this, AlarmNotify::class.java))
-        }
-
-        return true
     }
 }

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:title="Profile">
+        <menu>
+            <item android:id="@+id/profile"
+                android:title="Profile"/>
+        </menu>
+    </item>
+
+    <item android:title="ContactUs">
+        <menu>
+            <item android:id="@+id/callUs"
+                android:title="Call Us"/>
+            <item android:id="@+id/mailUs"
+                android:title="Mail Us"/>
+        </menu>
+    </item>
+    <item android:title="AboutUs">
+        <menu>
+            <item android:id="@+id/aboutUs"
+                android:title="AboutUs"/>
+        </menu>
+    </item>
+
+
+
+</menu>
