@@ -4,8 +4,8 @@
 
     <item
         android:id="@+id/clock"
-        android:title="clock"
-        android:icon="@drawable/baseline_access_time_filled_24"
+        android:title="location"
+        android:icon="@drawable/where"
         app:showAsAction="always"/>
 
 </menu>

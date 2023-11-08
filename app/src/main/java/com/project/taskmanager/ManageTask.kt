@@ -38,9 +38,9 @@ class ManageTask : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_manage_task)
-        supportActionBar?.setBackgroundDrawable(ColorDrawable(Color.parseColor("#000080")))
+        supportActionBar?.setBackgroundDrawable(ColorDrawable(Color.parseColor("#FFE501")))
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        supportActionBar?.setTitle("Manage Tasks")
+        supportActionBar?.setTitle("Local Favourite Finder")
         note_id = intent.getLongExtra("note_id", -1)
         txtTitle = findViewById(R.id.txtTitle)
         txtDesc = findViewById(R.id.txtDesc)

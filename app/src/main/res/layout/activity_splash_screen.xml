@@ -1,54 +1,120 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#16167D">
+    android:background="@color/white"
+    tools:context=".SplashScreen">
 
-    <!-- Don't worry about the id names I have named the id's with reference to the file name for consistency -->
+    <androidx.cardview.widget.CardView
+        android:layout_width="200dp"
+        android:layout_height="190dp"
+        app:cardCornerRadius="30dp"
+        app:layout_constraintBottom_toTopOf="@+id/cd2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.56"
+        android:background="@color/white"
+        android:backgroundTint="@color/white"
+        tools:ignore="MissingConstraints">
 
-    <ImageView
-        android:id="@+id/imageView"
+        <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/lottie"
         android:layout_width="match_parent"
-        android:layout_height="150dp"
-        android:layout_marginTop="150dp"
-        android:src="@drawable/tasks" />
+        android:layout_height="190dp"
+        android:layout_below="@+id/txt2"
+        android:elevation="5dp"
+        android:backgroundTint="@color/white"
+        android:background="@color/white"
+        app:lottie_autoPlay="true"
+        app:lottie_rawRes="@raw/splash"
+        tools:ignore="MissingClass" />
+
+    </androidx.cardview.widget.CardView>
+
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cd3"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        app:cardCornerRadius="15dp"
+        app:layout_constraintBottom_toTopOf="@+id/cd2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.486"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.893"
+        android:background="@color/white"
+        tools:ignore="MissingConstraints">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@color/white"
+            android:fontFamily="@font/average"
+            android:gravity="center"
+            android:text="Local Favourite Finder"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="31dp"
+            android:textStyle="bold">
+
+        </TextView>
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="300dp"
+        android:layout_height="12dp"
+        android:id="@+id/cd2"
+        app:layout_constraintBottom_toTopOf="@+id/textView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.491"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.85"
+        android:background="@color/white"
+        tools:ignore="MissingConstraints">
+        <ProgressBar
+            android:id="@+id/Progressbar"
+            style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+            android:layout_width="300dp"
+            android:layout_height="12dp"
+            android:indeterminate="true"
+            android:indeterminateTint="@color/yellow"
+            android:background="@color/white"
+            ></ProgressBar>
+    </androidx.cardview.widget.CardView>
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="DAILY TASK MANAGER"
-        android:textSize="20dp"
+        android:text="www.localFavouriteFinder.com"
+        android:textAlignment="center"
         android:textStyle="bold"
-        android:gravity="center"
-        android:textColor="@color/white"
-        android:layout_below="@id/imageView"
-        android:padding="30dp"/>
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:textColor="#131313"
+        app:layout_constraintVertical_bias="0.904"
+        tools:ignore="MissingConstraints"></TextView>
 
-    <ProgressBar
-        android:id="@+id/progressBar"
-        android:layout_width="match_parent"
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/textView"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="50dp"
-        android:indeterminateTint="@color/amber"/>
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="20dp" />
 
-    <TextView
-        android:id="@+id/textView1"
-        android:layout_width="match_parent"
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline2"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/progressBar"
-        android:gravity="center"
-        android:layout_marginTop="100dp"
-        android:padding="15dp"
-        android:text="Please wait while we load your data"
-        android:textColor="@color/white"
-        android:textSize="15dp"
-        android:textStyle="bold"
-        android:textAlignment="center"/>
-
-</LinearLayout>
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="20dp" />
+</androidx.constraintlayout.widget.ConstraintLayout>

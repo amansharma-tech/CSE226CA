@@ -1,7 +1,6 @@
 package com.project.taskmanager
 
-import android.app.NotificationChannel
-import android.app.NotificationManager
+
 import android.content.Intent
 import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
@@ -38,8 +37,8 @@ class MainActivity : AppCompatActivity() {
         listView = findViewById(R.id.listView)
 
         fab = findViewById(R.id.floatingActionButton3)
-        supportActionBar?.setTitle("My Tasks")
-        supportActionBar?.setBackgroundDrawable(ColorDrawable(Color.parseColor("#000080")))
+        supportActionBar?.setTitle("Local Favourite Finder")
+        supportActionBar?.setBackgroundDrawable(ColorDrawable(Color.parseColor("#FFE501")))
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         navView = findViewById(R.id.navView)
@@ -55,10 +54,10 @@ class MainActivity : AppCompatActivity() {
                     Toast.makeText(this, "Call Us at: +91-7001067632", Toast.LENGTH_LONG).show()
                 }
                 R.id.mailUs -> {
-                    Toast.makeText(this, "Mail Us at: \n com.example.notepad@gmail.com", Toast.LENGTH_LONG).show()
+                    Toast.makeText(this, "Mail Us at: \n com.example.localfavouritefinder.com", Toast.LENGTH_LONG).show()
                 }
                 R.id.aboutUs -> {
-                    Toast.makeText(this, "AboutUs", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, "Yours truly", Toast.LENGTH_SHORT).show()
                 }
             }
             true
@@ -79,7 +78,7 @@ class MainActivity : AppCompatActivity() {
     }
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when(item.itemId) {
-            R.id.clock -> startActivity(Intent(this, AlarmNotify::class.java))
+            R.id.clock -> startActivity(Intent(this, Geocoder::class.java))
         }
         if (toggle.onOptionsItemSelected(item)) {
             return true
